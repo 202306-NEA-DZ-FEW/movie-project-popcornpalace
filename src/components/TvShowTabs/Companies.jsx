@@ -2,10 +2,10 @@ import Image from "next/image"
 
 import { IMAGE_BASE_URL } from "@/util/API"
 
-function Companies({ movie }) {
+function Companies({ show }) {
   return (
     <div className="py-8 flex items-center flex-wrap gap-8">
-      {movie.production_companies.map((company) => (
+      {show.production_companies.map((company) => (
         <div
           key={company.id}
           className="flex items-center justify-center gap-4"

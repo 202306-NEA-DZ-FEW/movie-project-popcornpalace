@@ -172,3 +172,23 @@ export const getSimilarTVShows = async (tvShowId) => {
 
   return data.results
 }
+
+export const getTVShowActorsById = async (tvShowId) => {
+  const res = await fetch(
+    `${BASE_URL}/tv/${tvShowId}/credits?api_key=${API_KEY}&language=en-US`,
+  )
+  const data = await res.json()
+
+  return data.cast
+}
+
+export const getTVShowTrailerById = async (tvShowId) => {
+  const res = await fetch(
+    `${BASE_URL}/tv/${tvShowId}/videos?api_key=${API_KEY}&language=en-US`,
+  )
+  const data = await res.json()
+
+  // const trailer = data.results.find((video) => video.type === "Trailer")
+
+  return data
+}

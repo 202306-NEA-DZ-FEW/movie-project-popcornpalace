@@ -33,17 +33,17 @@ export const teamMembers = [
   },
   {
     id: 4,
-    name: "Mohamed Matassi",
-    github: "https://github.com/M07am3dM",
-    linkedin: "https://www.linkedin.com/in/matassi-mohamed/",
+    name: "Mohamed Redha TCHOKETCH",
+    github: "https://github.com/mohamed70601",
+    linkedin: " https://www.linkedin.com/in/mohamed-redha-tchoketch-584b54285/",
     imgSrc:
       "https://media.licdn.com/dms/image/D4E03AQF5osmJLYc_WQ/profile-displayphoto-shrink_100_100/0/1680787767230?e=1700092800&v=beta&t=iV6EiNamc9HCLL0f4RM8V3JNBT0vSpXb--I2WTklr0Q",
   },
   {
     id: 5,
-    name: "Meriem Mansouri",
-    github: "https://github.com/meryem08",
-    linkedin: "https://www.linkedin.com/in/meriem-mansouri-1b1643276/",
+    name: "Abdel Hakim Tiabi",
+    github: "https://github.com/Hxkim10",
+    linkedin: "https://www.linkedin.com/in/abdelhakimtiabi/",
     imgSrc:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZEWt9Dr4D_DIzdIrHERkTyeduD4eeuDF2lfX9ojX4UW7WytlfAEB5BALZcKCG-Ahglvo&usqp=CAU",
   },

@@ -5,17 +5,17 @@ import Trailer from "./Trailer"
 import Actors from "./Actors"
 import Companies from "./Companies"
 
-function Tabs({ movie, similarMovies, trailer, actors }) {
+function TvShowTabs({ show, similarMovies, trailer, actors }) {
   const [activeTab, setActiveTab] = useState(0)
 
   const tabItems = [
     {
       label: "OVERVIEW",
-      content: <Overview movie={movie} similar={similarMovies} />,
+      content: <Overview {...show} similar={similarMovies} />,
     },
     { label: "TRAILER", content: <Trailer trailer={trailer} /> },
     { label: "ACTORS", content: <Actors actors={actors} /> },
-    { label: "COMPANIES", content: <Companies movie={movie} /> },
+    { label: "COMPANIES", content: <Companies show={show} /> },
   ]
 
   const handleTabClick = (index) => {
@@ -44,4 +44,4 @@ function Tabs({ movie, similarMovies, trailer, actors }) {
   )
 }
 
-export default Tabs
+export default TvShowTabs

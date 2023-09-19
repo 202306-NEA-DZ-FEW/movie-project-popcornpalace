@@ -1,15 +1,14 @@
 import Row from "../Row"
 
-function Overview({ movie, similar }) {
+function Overview({ name, overview, original_language, genre_ids, similar }) {
   return (
     <div className="py-8 ">
-      <h4 className="dark:text-white text-2xl mb-4">{movie.tagline}</h4>
       <p className="mb-8 dark: font-light text-lg text-gray-300">
-        {movie.overview}
+        {overview ? overview : "no description for this tv show is available"}
       </p>
       <p className="flex items-center gap-2 py-1">
         <span className="text-gray-400">Language</span>
-        {movie.spoken_languages.map((lang, index) => (
+        {original_languages.map((lang, index) => (
           <span
             key={lang.english_name}
             className="text-sm dark:text-white flex gap-4 items-center"
@@ -21,13 +20,13 @@ function Overview({ movie, similar }) {
       </p>
       <p className="flex items-center gap-2 py-1">
         <span className="text-gray-400">Genres</span>
-        {movie.genres.map((genre, index) => (
+        {show.genres.map((genre, index) => (
           <span
             key={genre.id}
             className="text-sm dark:text-white flex gap-4 items-center"
           >
             {genre.name}
-            {index < movie.genres.length - 1 ? ", " : ""}
+            {index < show.genres.length - 1 ? ", " : ""}
           </span>
         ))}
       </p>

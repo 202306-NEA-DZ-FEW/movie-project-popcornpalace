@@ -56,7 +56,7 @@ export const fetchMovies = async (query, category, genre, page) => {
     return data
   } else {
     const res = await fetch(
-      `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&${page}`,
+      `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${page}`,
     )
     const data = await res.json()
     return data
@@ -171,4 +171,16 @@ export const getSimilarTVShows = async (tvShowId) => {
   const data = await res.json()
 
   return data.results
+}
+export const getTVShowTrailer = async (tvId) => {
+  const res = await fetch(`${BASE_URL}/tv/${tvId}/videos?api_key=${API_KEY}`)
+  const data = await res.json()
+
+  return data
+}
+export const getTVShowActors = async (tvId) => {
+  const res = await fetch(`${BASE_URL}/tv/${tvId}/credits?api_key=${API_KEY}`)
+  const data = await res.json()
+
+  return data.cast
 }

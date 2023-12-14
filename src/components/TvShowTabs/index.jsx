@@ -6,21 +6,18 @@ import Actors from "./Actors"
 import Companies from "./Companies"
 import { BsFillStarFill } from "react-icons/bs"
 
-function Tabs({ movie, similarMovies, trailer, actors }) {
+function TvShowTabs({ tvShow, similarTvShows, trailer, actors }) {
   const [activeTab, setActiveTab] = useState(0)
-  const [releseYear] = movie.release_date.split("-")
-  const hours = Math.floor(movie.runtime / 60)
-  const minutes = movie.runtime % 60
-  const formattedRuntime = `${hours}h ${minutes}min`
+  const [releseYear] = tvShow.first_air_date.split("-")
 
   const tabItems = [
     {
       label: "OVERVIEW",
-      content: <Overview movie={movie} similar={similarMovies} />,
+      content: <Overview tvShow={tvShow} similar={similarTvShows} />,
     },
     { label: "TRAILER", content: <Trailer trailer={trailer} /> },
     { label: "ACTORS", content: <Actors actors={actors} /> },
-    { label: "COMPANIES", content: <Companies movie={movie} /> },
+    { label: "COMPANIES", content: <Companies tvShow={tvShow} /> },
   ]
 
   const handleTabClick = (index) => {
@@ -30,14 +27,15 @@ function Tabs({ movie, similarMovies, trailer, actors }) {
   return (
     <>
       <h1 className="dark:text-white xl:text-4xl text-3xl mb-4 font-bold flex justify-between">
-        {movie.original_title}
+        {tvShow.name}
         <span className="flex items-center gap-2">
-          {movie.vote_average} <BsFillStarFill className="text-yellow-500" />
+          {tvShow.vote_average} <BsFillStarFill className="text-yellow-500" />
         </span>
       </h1>
       <p className="text-gray-400 text-sm flex items-center gap-2 mb-10">
-        <span>{releseYear}</span>|<span>{formattedRuntime}</span>|
-        <span>{movie.adult ? "18+" : "16+"}</span>
+        <span>{releseYear}</span>|
+        <span>{tvShow.number_of_seasons} seasons</span>|
+        <span>{tvShow.adult ? "18+" : "16+"}</span>
       </p>
       <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
         <ul className="flex flex-wrap ">
@@ -61,4 +59,4 @@ function Tabs({ movie, similarMovies, trailer, actors }) {
   )
 }
 
-export default Tabs
+export default TvShowTabs

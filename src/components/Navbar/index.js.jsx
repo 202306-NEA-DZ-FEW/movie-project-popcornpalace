@@ -19,24 +19,23 @@ function Navbar({ genres }) {
     const name = search
     router.push({
       pathname: "/movies",
-      query: { name, search, category: "", genre: "", page: 1 },
+      query: { search },
     })
     searchRef.current.value = ""
   }
 
   function handleSelect(id, name, title) {
-    console.log("from: ", id)
     if (title === "Movies") {
       const category = id
       router.push({
         pathname: "/movies",
-        query: { name, search: "", category, genre: "", page: 1 },
+        query: { name, category },
       })
     } else {
       const genre = id
       router.push({
         pathname: "/movies",
-        query: { name, search: "", category: "", genre, page: 1 },
+        query: { name, genre },
       })
     }
   }
@@ -54,7 +53,7 @@ function Navbar({ genres }) {
   }
   return (
     <>
-      <nav className=" fixed w-full z-30 top-0 left-0 bg-gradient-to-b from-slate-950 to-transparent">
+      <nav className=" fixed w-full z-30 top-0 left-0 bg-gradient-to-b from-black to-transparent">
         <div
           className={`${
             open ? "bg-black" : ""

@@ -1,20 +1,46 @@
+import PosterImagePlaceHolder from "@/components/PosterImage/PosterImagePlaceHolder"
+import TabsPlaceHolder from "@/components/Tabs/TabsPlaceHolder"
 import {
   IMAGE_BASE_URL_ORIGINAL,
   getShowById,
   getSimilarTVShows,
+  getTVShowActors,
+  getTVShowTrailer,
 } from "@/util/API"
+import dynamic from "next/dynamic"
 import Head from "next/head"
 import Image from "next/image"
 import { BsFillStarFill } from "react-icons/bs"
 
-function ShowDetails({ show, similarShows }) {
+// lazy UI
+const PosterImage = dynamic(() => import("@/components/PosterImage"), {
+  loading: () => <PosterImagePlaceHolder />,
+})
+
+const TvShowTabs = dynamic(() => import("@/components/TvShowTabs"), {
+  loading: () => <TabsPlaceHolder />,
+})
+
+function ShowDetails({ show, similarShows, trailer, actors }) {
   return (
     <>
       <Head>
         <title>{show.name}</title>
         <meta name="description" content={show.overview} />
       </Head>
-      <main>
+      <main className="p-4 grid xl:grid-cols-9 xl:p-20 md:p-8 grid-cols-1 sm:grid-col-1 gap-24 md:grid-cols-2 md:mt-16">
+        <PosterImage URL={`${IMAGE_BASE_URL_ORIGINAL}${show?.poster_path}`} />
+        <div className="xl:col-span-5">
+          {/* Tabs */}
+          <TvShowTabs
+            tvShow={show}
+            similarTvShows={similarShows}
+            trailer={trailer}
+            actors={actors}
+          />
+        </div>
+      </main>
+      {/* <main>
         <div className="h-[200px]"></div>
         <Image
           width={200}
@@ -39,7 +65,7 @@ function ShowDetails({ show, similarShows }) {
             </h1>
           ))}
         </div>
-      </main>
+      </main> */}
     </>
   )
 }
@@ -50,10 +76,14 @@ export async function getServerSideProps(context) {
   const { showId } = context.query
   const show = await getShowById(showId)
   const similarShows = await getSimilarTVShows(showId)
+  const trailer = await getTVShowTrailer(showId)
+  const actors = await getTVShowActors(showId)
   return {
     props: {
       show,
       similarShows,
+      trailer,
+      actors,
     },
   }
 }
